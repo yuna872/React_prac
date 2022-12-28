@@ -4,11 +4,12 @@ import './index.css';
 // import AppJSX from './AppJSX';
 import AppProfile from './AppProfile';
 import reportWebVitals from './reportWebVitals';
+import Counter from './AppCount';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppProfile />
+    <Counter />
   </React.StrictMode>
 );
 
