@@ -1,23 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import AppJSX from './AppJSX';
-// import AppProfile from './AppProfile';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import AppCounter from './AppCounter';
-import AppProducts from './basic/AppProducts';
-import AppXY from './AppXY';
-import AppMentor from './AppMentor';
-import AppForm from './AppForm';
-import AppWrap from './AppWrap';
-import AppCard from './AppCard';
-import AppTheme from './AppTheme';
-import AppClass from './AppClass';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppClass/>
+    <App />
   </React.StrictMode>
 );
 

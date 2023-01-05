@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import useProducts from '../../hooks/use-products';
 
 export default function Products() {
   const [count, setCount] = useState(0);
-  const [products, setProducts] = useState([]);
   const [checked, setChecked] = useState(false);
-
+  const [loading, error, products] = useProducts({salesOnly : checked});
   const handleChange = () => setChecked((prev)=> !prev);
 
-  useEffect(() => {
-    fetch(`data/${checked ? 'sale_' : ''}products.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      });
-    
-  }, [checked]);
-
-
+  if (loading) return <p>로딩중,,,</p>;
+  if (error) return <p>{error}</p>
   return (
     <>
       <input 
