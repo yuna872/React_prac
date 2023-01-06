@@ -1,0 +1,10 @@
+{
+  "name" : "management",
+  "version" : "1.0.0",
+  "script": {
+    "client": "cd client npm start",
+    "server": "modemon server.js",
+    "dev" : 
+
+  }
+}
