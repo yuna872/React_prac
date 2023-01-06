@@ -2,6 +2,7 @@ import '.././App.css';
 import React from 'react';
 import { useState } from 'react';
 import AddTodo from './AddTodo/AddTodo.jsx';
+import Todo from './Todo/Todo';
 
 export default function TodoList() {
   const [todos, setTodos] = useState([
@@ -25,27 +26,30 @@ export default function TodoList() {
   // 추가하기
   const handleAdd = (todo) => {
     // 새로운 todo 를 todos에 업데이트
-    console.log(todo)
+    setTodos([...todos, todo])
   }
-
+  const handleUpdate = (updated) => {
+    setTodos(todos.map((todo) => 
+      todo.id === updated.id ? updated : todo
+    ))
+  }
   // 삭제하기
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo)=>{return todo.id !== id}))
+  const handleDelete = (deleted) => {
+    setTodos(todos.filter((todo)=> todo.id !== deleted))
   }
 
   return (
     <section>
       <ul>
         {
-          todos.map((todo)=>{
-            return (
-              <li key={todo.id}>
-                <input type='checkbox'/>
-                <span>{todo.title}</span>
-                <button onClick={() => {deleteTodo(todo.id)}}>delete</button>
-              </li>
-            )
-          })
+          todos.map((todo)=> (
+            <Todo 
+              key={todo.id} 
+              todo={todo}
+              onUpdate={handleUpdate}
+              onDelete={handleDelete}
+            />
+          ))
         }
       </ul>
       <AddTodo onAdd={handleAdd}/>
