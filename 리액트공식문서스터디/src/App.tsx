@@ -1,8 +1,15 @@
 // import Input from "./section_0/QuickStart/Input";
 import Profile from "./section_0/QuickStart/Profile";
 import MyButton from "./section_0/QuickStart/MyButton";
+import TicTacToe from "./section_0/TicTacToe/TicTacToe";
 
 function App() {
+  // Tic Tac Toe
+  return (
+    <>
+      <TicTacToe />
+    </>
+  );
   const user1 = {
     name: "Hedy Lamarr",
     imageUrl: "https://i.imgur.com/yXOvdOSs.jpg",
@@ -15,6 +22,7 @@ function App() {
     imageSize: 0,
   };
 
+  // Installation & Quick Start
   return (
     // JSX에서는 최상단에 부모 태그가 반드시 필요하다.
     <>
