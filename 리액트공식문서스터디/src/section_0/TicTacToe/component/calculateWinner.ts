@@ -1,4 +1,7 @@
-function calculateWinner(squares: Array<number | null>) {
+function calculateWinner(
+  squares: Array<string | null>
+): [string | null, Array<number> | null] {
+  console.log(squares);
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -12,10 +15,12 @@ function calculateWinner(squares: Array<number | null>) {
 
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c])
-      return squares[a];
-    else return;
+    if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
+      return [squares[a], lines[i]];
+    }
   }
+
+  return [null, null];
 }
 
 export default calculateWinner;
