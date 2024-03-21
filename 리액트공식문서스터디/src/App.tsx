@@ -3,6 +3,7 @@ import Profile from "./section_0/QuickStart/Profile";
 import MyButton from "./section_0/QuickStart/MyButton";
 // import TicTacToe from "./section_0/TicTacToe/TicTacToe";
 import ThinkingInReact from "./section_0/ThinkingInReact/FilterableProductTable";
+import Gallery from "./section_1/Gallery";
 
 function App() {
   return (
@@ -11,7 +12,10 @@ function App() {
       {/* <TicTacToe /> */}
 
       {/* Thinking In React */}
-      <ThinkingInReact/>
+      {/* <ThinkingInReact/> */}
+
+      {/* Describing the UI */}
+      <Gallery/>
     </>
   );
 
