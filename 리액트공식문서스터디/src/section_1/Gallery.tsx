@@ -1,6 +1,11 @@
-function Profile() {
-  return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
-}
+/* Exporting and importing a component
+1. Make a new JS file to put the components in.
+2. Export your function component from that file
+3. Import it in the file where you'll use the component
+=> Profile 파일을 새로 만들어 import 해 사용한다.
+ */
+
+import Profile from "./Profile";
 
 export default function Gallery() {
   /*
