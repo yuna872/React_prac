@@ -88,3 +88,38 @@ export default function Bio() {
   );
 }
 ```
+
+<br/>
+<br/>
+
+## 1-4. JavaScript in JSX wth Curly Braces 
+
+JSX를 사용하면 JavaScript 파일 내에 HTML과 유사한 마크업을 작성하여 렌더링 로직과 콘텐츠를 같은 곳에 위치시킬 수 있다.  
+때로는 마크업 안에 약간의 JavaScript 로직을 추가하거나 동적 프로퍼티를 참조하고 싶을 떄가 있다.  
+이 경우 JSX에서 중괄호를 사용하여 JavaScript를 작성할 수 있다.
+<br/>
+
+### Padding strings with quotes
+JSX에 문자열 속성을 전달하려면, `' '` 또는 `" "`로 묶는다.  
+src 또는 alt를 동적으로 지정하려는 경우에는 중괄호로 대체하여 JavaScript의 값을 사용할 수 있다.
+```
+export default function Avatar() {
+  const description = 'Gregorio Y. Zara';
+  return (
+    <img
+      className="avatar"
+      src="https://i.imgur.com/7vQD0fPs.jpg"
+      alt={description}
+    />
+  );
+}
+```
+
+<br/>
+
+### Using "double curlies" : CSS and other objects in JSX
+string, number, JavaScript 표현식 외에도 객체를 전달할 수도 있다.  
+JSX에서 JavaScript 객체를 전달하려면 다른 중괄호 쌍으로 객체를 감싸야 한다.
+```
+person={{ name:"Hedy Lamarr", inventions: 5}}
+```

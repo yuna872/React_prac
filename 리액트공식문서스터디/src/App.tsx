@@ -4,6 +4,7 @@ import MyButton from "./section_0/QuickStart/MyButton";
 // import TicTacToe from "./section_0/TicTacToe/TicTacToe";
 import ThinkingInReact from "./section_0/ThinkingInReact/FilterableProductTable";
 import Gallery from "./section_1/Gallery";
+import TodoList from "./section_1/TodoList";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       {/* <ThinkingInReact/> */}
 
       {/* Describing the UI */}
-      <Gallery/>
+      {/* <Gallery/> */}
+      <TodoList />
     </>
   );
 
