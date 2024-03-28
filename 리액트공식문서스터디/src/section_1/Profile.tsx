@@ -14,6 +14,8 @@ export function Button() {}
 ** 보편적으로 한 파일에서 하나의 컴포넌트만 export 할 때 default export 방식을 사용하고, 여러 컴포넌트를 export할 경우에는 named export 방식을 사용한다.
 */
 
+import Avatar from "./Avatar";
+
 function Profile() {
   return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 }

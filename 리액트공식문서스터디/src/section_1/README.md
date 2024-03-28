@@ -92,7 +92,7 @@ export default function Bio() {
 <br/>
 <br/>
 
-## 1-4. JavaScript in JSX wth Curly Braces 
+## 1-4. JavaScript in JSX wth Curly Braces
 
 JSX를 사용하면 JavaScript 파일 내에 HTML과 유사한 마크업을 작성하여 렌더링 로직과 콘텐츠를 같은 곳에 위치시킬 수 있다.  
 때로는 마크업 안에 약간의 JavaScript 로직을 추가하거나 동적 프로퍼티를 참조하고 싶을 떄가 있다.  
@@ -100,8 +100,10 @@ JSX를 사용하면 JavaScript 파일 내에 HTML과 유사한 마크업을 작�
 <br/>
 
 ### Padding strings with quotes
+
 JSX에 문자열 속성을 전달하려면, `' '` 또는 `" "`로 묶는다.  
 src 또는 alt를 동적으로 지정하려는 경우에는 중괄호로 대체하여 JavaScript의 값을 사용할 수 있다.
+
 ```
 export default function Avatar() {
   const description = 'Gregorio Y. Zara';
@@ -118,8 +120,89 @@ export default function Avatar() {
 <br/>
 
 ### Using "double curlies" : CSS and other objects in JSX
+
 string, number, JavaScript 표현식 외에도 객체를 전달할 수도 있다.  
 JSX에서 JavaScript 객체를 전달하려면 다른 중괄호 쌍으로 객체를 감싸야 한다.
+
 ```
 person={{ name:"Hedy Lamarr", inventions: 5}}
+```
+
+<br/>
+<br/>
+
+## Passing Props to a Component
+
+### Specifying a default value for a prop
+
+값이 지정되지 않았을 때, prop에 기본값을 주길 원한다면, 변수 바로 뒤에 `=`과 함께 기본값을 넣어 구조 분해 할당을 해줄 수 있다.
+
+이 기본값은 size prop이 없거나 `size={undefined}`로 전달될 때 사용된다.  
+`size={null}`의 경우에는 기본값을 사용하지 않는다.
+
+```
+function Avatar({ person, size = 100 }) {
+  //...
+}
+```
+
+
+### Forwarding props with the JSX spread syntax
+
+```
+function Profile({ person, size, isSepia, thickBorder }) {
+  return (
+    <div className="card">
+      <Avatar
+        person={person}
+        size={size}
+        isSepia={isSepia}
+        thickBorder={thickBorder}
+      />
+    </div>
+  );
+}
+```
+Profile 컴포넌트에서 props는 Avatar 컴포넌트에 전달될 때만 사용된다. 
+이 경우에는 보다 간결한 spread 구문을 사용하는 것이 합리적일 수 있다.
+```
+function Profile(props) {
+  return (
+    <div className="card">
+      <Avatar {...props} />
+    </div>
+  );
+}
+```
+**단, 전개구문은 제한적으로 사용하는 것이 좋다.**  
+이는 종종 컴포넌트들을 분할하여 자식을 JSX로 전달해야 함을 의미한다.
+
+### Passing JSX as children
+
+때로는 만든 컴포넌트들끼리 중첩하고 싶을 수도 있다.  
+JSX 태그 내에 컨텐츠를 중첩하면, 부모 컴포넌트는 해당 컨텐츠를 `children`이라는 prop으로 받는다.
+```
+import Avatar from './Avatar.js';
+
+function Card({ children }) {
+  return (
+    <div className="card">
+      {children}
+    </div>
+  );
+}
+
+export default function Profile() {
+  return (
+    <Card>
+      <Avatar
+        size={100}
+        person={{ 
+          name: 'Katsuko Saruhashi',
+          imageId: 'YfeOqp2'
+        }}
+      />
+    </Card>
+  );
+}
 ```

@@ -1,10 +1,11 @@
 // import Input from "./section_0/QuickStart/Input";
-import Profile from "./section_0/QuickStart/Profile";
+// import Profile from "./section_0/QuickStart/Profile";
 import MyButton from "./section_0/QuickStart/MyButton";
 // import TicTacToe from "./section_0/TicTacToe/TicTacToe";
 import ThinkingInReact from "./section_0/ThinkingInReact/FilterableProductTable";
 import Gallery from "./section_1/Gallery";
 import TodoList from "./section_1/TodoList";
+import Profile from "./section_1/Avatar";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
 
       {/* Describing the UI */}
       {/* <Gallery/> */}
-      <TodoList />
+      {/* <TodoList /> */}
+      <Profile />
     </>
   );
 
@@ -42,8 +44,8 @@ function App() {
 
       {/* <Input/> */}
 
-      <Profile user={user1} />
-      <Profile user={user2} />
+      {/* <Profile user={user1} />
+      <Profile user={user2} /> */}
     </>
   );
 }
