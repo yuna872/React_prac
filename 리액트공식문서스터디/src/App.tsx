@@ -6,6 +6,9 @@ import ThinkingInReact from "./section_0/ThinkingInReact/FilterableProductTable"
 import Gallery from "./section_1/Gallery";
 import TodoList from "./section_1/TodoList";
 import Profile from "./section_1/Avatar";
+import List from "./section_1/Rendering_Lists/List";
+import RecipeList from "./section_1/Rendering_Lists/Recipes";
+import Poem from "./section_1/Rendering_Lists/Poem";
 
 function App() {
   return (
@@ -19,7 +22,10 @@ function App() {
       {/* Describing the UI */}
       {/* <Gallery/> */}
       {/* <TodoList /> */}
-      <Profile />
+      {/* <Profile /> */}
+      {/* <List /> */}
+      {/* <RecipeList /> */}
+      <Poem />
     </>
   );
 

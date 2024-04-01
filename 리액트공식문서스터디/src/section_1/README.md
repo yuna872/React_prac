@@ -145,6 +145,7 @@ function Avatar({ person, size = 100 }) {
   //...
 }
 ```
+<br/>
 
 
 ### Forwarding props with the JSX spread syntax
@@ -177,6 +178,8 @@ function Profile(props) {
 **단, 전개구문은 제한적으로 사용하는 것이 좋다.**  
 이는 종종 컴포넌트들을 분할하여 자식을 JSX로 전달해야 함을 의미한다.
 
+<br/>
+
 ### Passing JSX as children
 
 때로는 만든 컴포넌트들끼리 중첩하고 싶을 수도 있다.  
@@ -206,6 +209,8 @@ export default function Profile() {
   );
 }
 ```
+<br/>
+
 
 ### How props change over time
 
@@ -216,6 +221,8 @@ __컴포넌트는 시간에 따라 다른 props를 받을 수 있다.__ props는
 컴포넌트가 props를 변경해야 하는 경우, 부모 컴포넌트에 다른 props(새로운 객체)를 전달하도록 요청해야 한다. 이전의 props는 버려지고 JavaScript 엔진은 기존 props가 차지했던 메모리를 회수(가비지 컬렉팅)하게 된다.
 
 <br/>
+<br/>
+
 
 ## Conditional Rendering
 ### 조건에 따라 JSX 반환하기 및 삼항연산자
@@ -244,6 +251,9 @@ return (
 
 따라서, __이 두 예제는 완전히 동일하다!__
 
+<br/>
+
+
 ### 논리 AND 연산자
 ```
 return (
@@ -252,6 +262,9 @@ return (
   </li>
 );
 ```
+
+<br/>
+
 
 __`&&`의 왼쪽에 숫자를 넣지 말아라.__  
 JavaScript는 왼쪽을 자동으로 `boolean`으로 변환한다.  
@@ -265,4 +278,37 @@ messageCount가 0일 떄 아무것도 렌더링되지 않을 것을 기대하지
 messageCount > 0 && <p>New messages</p>
 // 형변환, 이중부정
 !!messageCount && <p>New messages</p>
+```
+
+<br/>
+<br/>
+
+## Rendering Lists
+
+### Keeping list items in order with key
+각 배열 항목에는 해당 배열의 항목들 사이에서 고유하게 식별할 수 있는 문자열 또는 숫자인 `key`를 부여해야 한다.
+
+`key`는 React에게 각 컴포넌트가 어떤 배열 항목에 해당하는지 알려준다.  
+이는 정렬등으로 인해 배열의 요소가 이동하거나, 삽입되거나, 삭제될 수 있는 경우 중요해진다.  
+이는 React가 정확히 무슨 일이 일어났는지 추론하고 DOM 트리를 올바르게 업데이트 하는데 도움이 된다.
+
+<br/>
+
+### Rules of keys  
+
+- __Key는 형제간에 고유해야 한다.__  다른 배열의 JSX 노드에는 동일한 key를 사용해도 괜찮다.
+- __key는 변경되지 않아야 한다.__
+
+<br/>
+<br/>
+
+> Index를 key로 사용하는 경우
+
+`key`를 지정하지 않으면, React는 인덱스를 key로 사용한다.  
+하지만, 인덱스를 key로 사용하면 종종 미묘하고 혼란스러운 버그가 발생합니다.
+
+컴포넌트는 `key`를 prop으로 받지 않는다. React 자체에서 힌트로만 사용되기 때문에,  
+컴포넌트에 id가 필요한 경우 별도의 프로퍼티도 전달해야 한다.
+```
+<Profile key={id} userId={id} />
 ```
