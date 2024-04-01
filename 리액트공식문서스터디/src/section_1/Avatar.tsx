@@ -1,6 +1,14 @@
 import { getImageUrl } from "./utils";
 
-function Avatar({ person, size }) {
+type TAvatar = {
+  person: {
+    name: string;
+    imageId: string;
+  };
+  size: number;
+};
+
+function Avatar({ person, size }: TAvatar) {
   return (
     <>
       <img

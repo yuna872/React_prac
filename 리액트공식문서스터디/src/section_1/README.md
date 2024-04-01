@@ -214,3 +214,55 @@ __컴포넌트는 시간에 따라 다른 props를 받을 수 있다.__ props는
 
 그러나 props는 불변으로, "변경할 수 없다(immutable)"는 뜻을 가진다.  
 컴포넌트가 props를 변경해야 하는 경우, 부모 컴포넌트에 다른 props(새로운 객체)를 전달하도록 요청해야 한다. 이전의 props는 버려지고 JavaScript 엔진은 기존 props가 차지했던 메모리를 회수(가비지 컬렉팅)하게 된다.
+
+<br/>
+
+## Conditional Rendering
+### 조건에 따라 JSX 반환하기 및 삼항연산자
+```
+if (isPacked) {
+  return <li className="item">{name} ✔</li>;
+}
+return <li className="item">{name}</li>;
+```
+위와 같은 중복은 코드를 관리하기 어렵게 만들 수 있다.  
+이런 상황에서는 조건부로 약간의 JSX를 포함시켜 코드를 더 DRY(Don't Repeat Yourself)하게 만들 수 있다.
+
+```
+return (
+  <li className="item">
+    {isPacked ? name + ' ✔' : name}
+  </li>
+);
+```
+
+> 이 두 예제는 완전히 동일할까?
+
+첫번째 코드에서 `<li>`의 서로 다른 두 인스턴스를 생성하고 있기 때문에 다르다고 생각할 수 있다.  
+하지만 JSX 요소는 내부 state를 보유하지 않고 실제 DOM 노드가 아니기 때문에 [인스턴스]가 아니다. 두 개의 인스턴스를 생성하는 것이 아니라 청사진에 가깝다고 할 수 있다.  
+
+
+따라서, __이 두 예제는 완전히 동일하다!__
+
+### 논리 AND 연산자
+```
+return (
+  <li className="item">
+    {name} {isPacked && '✔'}
+  </li>
+);
+```
+
+__`&&`의 왼쪽에 숫자를 넣지 말아라.__  
+JavaScript는 왼쪽을 자동으로 `boolean`으로 변환한다.  
+그러나 왼쪽이 0이면 React는 빈 값 대신 0을 렌더링한다.
+
+예를 들어, `massageCount && <p>New Messages</p>`와 같은 코드를 작성하면,  
+messageCount가 0일 떄 아무것도 렌더링되지 않을 것을 기대하지만, 실제로는 0 자체를 렌더링한다.  
+
+이 문제를 해결하기 위해서는 왼쪽을 `boolean`으로 만들어 주면 된다.
+```
+messageCount > 0 && <p>New messages</p>
+// 형변환, 이중부정
+!!messageCount && <p>New messages</p>
+```

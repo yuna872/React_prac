@@ -32,10 +32,17 @@ const person2 = {
 //     </div>
 //   );
 // }
+type TPerson = {
+  name?: string;
+  theme: {
+    backgroundColor: string;
+    color: string;
+  };
+};
 
-function TodoList({ person: { name = "default name", theme } }) {
+function TodoList({ person }: { person: TPerson }) {
   // 객체 구조 분해 할당***
-
+  const { theme, name = "default name" } = person;
   return (
     <div style={theme}>
       <h1>{name}'s Todos</h1>
