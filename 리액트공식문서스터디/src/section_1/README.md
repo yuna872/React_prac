@@ -206,3 +206,11 @@ export default function Profile() {
   );
 }
 ```
+
+### How props change over time
+
+__컴포넌트는 시간에 따라 다른 props를 받을 수 있다.__ props는 항상 고정되어 있지 않다.  
+즉, props는 컴포넌트의 데이터를 처음에만 반영하는 것이 아니라 모든 시점에 반영한다.
+
+그러나 props는 불변으로, "변경할 수 없다(immutable)"는 뜻을 가진다.  
+컴포넌트가 props를 변경해야 하는 경우, 부모 컴포넌트에 다른 props(새로운 객체)를 전달하도록 요청해야 한다. 이전의 props는 버려지고 JavaScript 엔진은 기존 props가 차지했던 메모리를 회수(가비지 컬렉팅)하게 된다.
