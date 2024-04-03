@@ -11,6 +11,7 @@ import RecipeList from "./section_1/Rendering_Lists/Recipes";
 import Poem from "./section_1/Rendering_Lists/Poem";
 
 function App() {
+  
   return (
     <>
       {/* Tic Tac Toe */}
@@ -25,7 +26,7 @@ function App() {
       {/* <Profile /> */}
       {/* <List /> */}
       {/* <RecipeList /> */}
-      <Poem />
+      {/* <Poem /> */}    
     </>
   );
 
